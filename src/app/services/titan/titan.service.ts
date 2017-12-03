@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 
 import { Taskres } from '../../models/taskres';
+import { NotesRes } from '../../models/common/notesRes';
 
 @Injectable()
 export class TitanService {
@@ -61,5 +62,28 @@ export class TitanService {
     
       }
 
+      getNotes(enterPriseItemId: string): Observable<NotesRes> {
+        
+        
+            let username: string = 'ESB';
+            let password: string = 'BdL5C35jwNC2K6Vs';
+        
+            let headers = new HttpHeaders().set(
+              'Authorization', 'Basic ' + btoa(username + ":" + password
+              )
+            );
+        
+        
+            headers = headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
+            headers = headers.append('Access-Control-Allow-Credentials', 'true');
+            headers = headers.append('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS, POST, PUT, DELETE');
+        
+            return this.http.get<NotesRes>('https://localhost:4000/common/retrievenotes/enterpriseItemId/' + enterPriseItemId, {
+              headers: headers
+            })
+              .map(res => res
+              )
+        
+          }
 
 }

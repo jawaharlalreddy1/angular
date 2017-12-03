@@ -1,3 +1,7 @@
 .secondnavbar {
     z-index: 800;
   }
+
+  .modal-xl {
+    max-width: 1000px;
+  }

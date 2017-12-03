@@ -1,5 +1,5 @@
 import { SeoHeader } from './../../models/seo/seoHeader';
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { TitanService } from '../../services/titan/titan.service';
 
@@ -33,7 +33,6 @@ export class SeodetailsComponent implements OnInit {
       this.seoheader = seodata.product;
       this.websiteurllist = seodata.WebsiteUrlList;
       this.categorylist = seodata.CategoryList;
-
     },
       err => {
         console.log('An error has occured while retreving data from Titan Seo');

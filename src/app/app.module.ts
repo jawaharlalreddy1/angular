@@ -3,8 +3,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule,MatInputModule, MatDialogModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import 'hammerjs';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 
 import { AppComponent } from './app.component';
@@ -15,11 +18,16 @@ import {TitanService} from './services/titan/titan.service';
 import { McinfoComponent } from './components/mcinfo/mcinfo.component';
 import { SeoinfoComponent } from './components/seoinfo/seoinfo.component';
 import { SeodetailsComponent } from './components/seodetails/seodetails.component';
-import { NavbarsecondaryComponent } from './components/navbarsecondary/navbarsecondary.component'
+import { NavbarsecondaryComponent } from './components/navbarsecondary/navbarsecondary.component';
+import { NotesComponent } from './components/notes/notes.component';
+import { TaskHistoryComponent } from './components/task-history/task-history.component';
+import { AddNoteComponent } from './components/add-note/add-note.component';
+import { NoteComponent } from './components/note/note.component'
 // Create Routes
 const appRoutes: Routes = [
   {path:'', component: MytasksComponent},
-  {path:'seo/:id/:enterpriseItemId', component: SeoinfoComponent}
+  {path:'seo/:id/:enterpriseItemId/:pid', component: SeoinfoComponent}
+ // ,{path:'notes', component: NotesComponent}
 ];
 
 @NgModule({
@@ -31,7 +39,11 @@ const appRoutes: Routes = [
     McinfoComponent,
     SeoinfoComponent,
     SeodetailsComponent,
-    NavbarsecondaryComponent
+    NavbarsecondaryComponent,
+    NotesComponent,
+    TaskHistoryComponent,
+    AddNoteComponent,
+    NoteComponent,    
   ],
   imports: [
     BrowserModule,
@@ -40,9 +52,13 @@ const appRoutes: Routes = [
     HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule, 
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatInputModule,
+    MatDialogModule,
+    NgbModule.forRoot()
   ],
   providers: [TitanService],
+  entryComponents:[NotesComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

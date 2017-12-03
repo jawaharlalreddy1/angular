@@ -1,0 +1,6 @@
+export interface Notes {
+    enterpriseItemId?:string;
+    notes?:string;
+    addedBy?:string;
+    addedOn?:DateTimeFormat;
+};

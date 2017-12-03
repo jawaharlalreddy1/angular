@@ -1,0 +1,51 @@
+<div class="modal-header bg-light">
+  <h4 class="modal-title">Notes</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">      
+  <input type="text" 
+  class="form-control input-lg mb-2" 
+  [ngClass]="{'is-invalid':notes.errors?.required && notes.touched || notes.errors?.minlength}"
+  [(ngModel)]="note.notes"
+  name="notes"
+  #notes = "ngModel"
+  minlength="1"
+  required
+  placeholder=" Notes...">
+  <div *ngIf="notes.errors?.required && notes.touched" class="invalid-feedback">
+      Notes is required
+    </div>
+    <div *ngIf="notes.errors?.minlength && notes.touched" class="invalid-feedback">
+      Must be at least 1 characters
+    </div>
+
+  <button type="button" class="btn btn-outline-info fa fa-plus btn-sm mb-3" (click)="addNotes()"> Add Notes</button>  
+  <h6>Notes History</h6>
+  <hr class="bg-info active">
+
+  <table  *ngIf="notes?.length > 0;else noClients" class="table table-sm table-bordered">
+      <thead class="thead">
+        <tr class="bg-light Active">
+          <th class="text-dark h6">Notes Content</th>
+          <th class="text-dark h6">Added By</th>                
+          <th class="text-dark h6">Added On</th>                
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let note of notes">
+          <td><small class="text-dark"> {{ note?.notes }}</small></td>
+          <td><small class="text-dark"> {{ note?.addedBy }}</small></td>                
+          <td><small class="text-dark"> {{ note?.addedOn }}</small></td>                
+        </tr>
+      </tbody>
+    </table>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-info fa fa-window-close-o" (click)="activeModal.close('Close click')"> Close</button>
+</div>
+
+<ng-template #noClients>
+    <h6>There are no Notes for this product Instance!</h6>
+  </ng-template>

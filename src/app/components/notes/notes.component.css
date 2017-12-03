@@ -1,0 +1,8 @@
+input { height: 80px; }
+.modal-dialog{
+    overflow-y: initial !important
+}
+.modal-body{    
+    max-height: calc(100vh - 210px);
+    overflow-y: auto;
+}
