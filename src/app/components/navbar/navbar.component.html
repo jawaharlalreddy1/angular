@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-info mb-4 sticky-top ">
+  <a href="#" class="navbar-left">
+    <img class="navbar-brand" src="/assets/images/dex.jpg">
+  </a>
+  <a class="navbar-brand text-danger" href="#">Titan</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link text-Light" href="#" routerLink="/">My Tasks</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">My Group Tasks</a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item bg-light">Seo Group Tasks</a>
+          <a href="#" class="dropdown-item bg-light">Olm Group Tasks</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLink="/login">Login</a>
+      </li>
+    </ul>
+    <!--
+      <ul class="navbar-nav ml-auto">
+        <li *ngIf="!isLoggedIn && showRegister" class="nav-item">
+          <a class="nav-link" href="#" routerLink="/register">Register</a>
+        </li>
+        <li *ngIf="!isLoggedIn && showRegister" class="nav-item">
+          <a class="nav-link" href="#" routerLink="/login">Login</a>
+        </li>
+  
+        <li *ngIf="isLoggedIn" class="nav-item">
+            <a class="nav-link" href="#">{{loggedInUser}}</a>
+          </li>
+  
+          <li *ngIf="isLoggedIn" class="nav-item">
+              <a class="nav-link" href="#" routerLink="/settings">Settings</a>
+            </li>
+  
+        <li *ngIf="isLoggedIn" class="nav-item">
+            <a class="nav-link" href="#" (click)="onLogoutClick()">Logout</a>
+          </li>
+      </ul>-->
+  </div>
+</nav>

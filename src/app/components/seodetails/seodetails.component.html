@@ -1,0 +1,99 @@
+<div id="seodetails" role="tablist" aria-multiselectable="true">
+  <div class="card">
+    <div class="card-header" role="tab" id="headingFour">
+      <h6 class="mb-0">
+        <a data-toggle="collapse" data-parent="#seodetails" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          SEO Details
+        </a>
+      </h6>
+    </div>
+
+    <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-6">
+            <h5 class="h6">Business Name: <small class="text-dark text-capitalize"> {{ seoheader?.BusinessName }}</small></h5>        
+            <h6>Proposal Id: <small class="text-dark"> {{ seoheader?.proposalId }}</small></h6>       
+            <h6>Primary Category Id: <small class="text-dark"> {{ seoheader?.primaryCategoryId }}</small></h6>           
+          </div>
+          <div class="col-sm-6">
+            <h6>Confirmation Number: <small class="text-dark"> {{ seoheader?.confirmationNumber }}</small></h6>       
+            <h6>Notes: <small class="text-dark"> {{ seoheader?.notes }}</small></h6>   
+            <h6>Primary Category Name: <small class="text-dark"> {{ seoheader?.primaryCategoryId }}</small></h6>   
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+
+
+  <div id="catlist" role="tablist" aria-multiselectable="true">
+    <div class="card">
+      <div class="card-header" role="tab" id="headingFive">
+        <h6 class="mb-0">
+          <a data-toggle="collapse" data-parent="#catlist" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+            Category List
+          </a>
+        </h6>
+      </div>
+  
+      <div id="collapseFive" class="collapse" role="tabpanel" aria-labelledby="headingFive">
+        <div class="card-body">
+          <table class="table table-sm">
+            <thead class="thead">
+              <tr class="bg-light Active">
+                <th class="text-dark h6">Category Id</th>
+                <th class="text-dark h6">Category Name</th>                
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let category of categorylist">
+                <td><small class="text-dark"> {{ category?.CategoryId }}</small></td>
+                <td><small class="text-dark"> {{ category?.CategoryName }}</small></td>                
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <br>
+
+    <div id="websitelist" role="tablist" aria-multiselectable="true">
+      <div class="card">
+        <div class="card-header" role="tab" id="headingSix">
+          <h6 class="mb-0">
+            <a data-toggle="collapse" data-parent="#websitelist" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+              Website List
+            </a>
+          </h6>
+        </div>
+    
+        <div id="collapseSix" class="collapse" role="tabpanel" aria-labelledby="headingSix">
+          <div class="card-body">
+            <table class="table table-sm">
+              <thead class="thead">
+                <tr class="bg-light Active">
+                  <th class="text-dark h6">URL</th>
+                  <th class="text-dark h6">User Name</th>                
+                  <th class="text-dark h6">Password</th>  
+                  <th class="text-dark h6">Primary</th>  
+                  <th class="text-dark h6">DexMedia Site?</th>  
+                  <th class="text-dark h6">New Website?</th>  
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let website of websiteurllist">
+                  <td><small class="text-dark"> {{website?.url}}</small></td>
+                  <td><small class="text-dark"> {{website?.isDexmediaSite}}</small></td>                
+                  <td><small class="text-dark"> {{website?.isPrimary}}</small></td> 
+                  <td><small class="text-dark"> {{website?.isNew}}</small></td> 
+                  <td><small class="text-dark"> {{website?.username}}</small></td> 
+                  <td><small class="text-dark"> {{website?.password}}</small></td> 
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <br>
