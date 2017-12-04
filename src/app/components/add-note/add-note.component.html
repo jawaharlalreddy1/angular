@@ -1,3 +1,7 @@
-<p>
-  add-note works!
-</p>
+<div>
+  <form #formCtrl="ngForm">
+    <input type="text" class="form-control input-lg mb-2" [(ngModel)]="note" name="note" required placeholder="Add Notes...">
+    <button type="button" class="btn btn-outline-info fa fa-plus btn-sm mb-3" (click)="addNotes()" [disabled]="!formCtrl.form.valid">
+    Add Notes</button>
+  </form>
+</div>

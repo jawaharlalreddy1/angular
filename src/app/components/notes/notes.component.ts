@@ -1,7 +1,8 @@
-import { Component, OnInit,Input } from '@angular/core';
-import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit, Input } from '@angular/core';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { TitanService } from '../../services/titan/titan.service';
-import {Notes} from '../../models/common/notes';
+import { Notes } from '../../models/common/notes';
+import { NotesRes } from '../../models/common/notesRes';
 
 
 @Component({
@@ -11,20 +12,15 @@ import {Notes} from '../../models/common/notes';
 })
 export class NotesComponent implements OnInit {
   @Input() id;
-  notes:any[];
-  note:Notes ={
-    enterpriseItemId:'',
-    notes:'',
-    addedBy:'',
-    addedOn:null
-  };
+  notes: Notes[];
   constructor(public activeModal: NgbActiveModal,
-    private titanService: TitanService) { }
+    public titanService: TitanService) { }
 
   ngOnInit() {
     this.titanService.getNotes(this.id).subscribe(notesdata => {
-      console.log(notesdata);  
+      console.log(notesdata);
       this.notes = notesdata.notes;     
+      console.log(this.notes);
     },
       err => {
         console.log('An error has occured while retreving data from Titan Seo');
@@ -32,8 +28,19 @@ export class NotesComponent implements OnInit {
     )
   }
 
-  addNotes(){
+  addNote(note: Notes) {
+    note.enterpriseItemId = this.id;
+    note.addedBy = 'z990758';
+    note.addedOn = new Date();
+    console.log(note);
+    this.titanService.addNote(note).subscribe(res => {
+      console.log(res);
+      this.notes.push(note)
+    }
 
+    )
+    
   }
+
 
 }

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Notes } from '../../models/common/notes';
+import { TitanService } from '../../services/titan/titan.service';
 
 @Component({
   selector: 'app-note',
@@ -6,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./note.component.css']
 })
 export class NoteComponent implements OnInit {
-
-  constructor() { }
+  @Input('note') note: Notes;  
+  constructor(public titanService: TitanService) { }
 
   ngOnInit() {
   }
