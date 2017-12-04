@@ -15,12 +15,13 @@ export class NotesComponent implements OnInit {
   notes: Notes[];
   constructor(public activeModal: NgbActiveModal,
     public titanService: TitanService) { }
-
+  note: any[] = [];
   ngOnInit() {
     this.titanService.getNotes(this.id).subscribe(notesdata => {
-      console.log(notesdata);
-      this.notes = notesdata.notes;     
-      console.log(this.notes);
+      this.notes = notesdata.notes;
+      if (this.notes === undefined) {
+        this.notes = this.note;
+      }
     },
       err => {
         console.log('An error has occured while retreving data from Titan Seo');
@@ -39,7 +40,7 @@ export class NotesComponent implements OnInit {
     }
 
     )
-    
+
   }
 
 
