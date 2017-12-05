@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { TitanService } from '../../services/titan/titan.service';
 
 @Component({
   selector: 'app-task-history',
@@ -6,10 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./task-history.component.css']
 })
 export class TaskHistoryComponent implements OnInit {
-
-  constructor() { }
+  @Input() id;
+  taskhistory: any[] = [];
+  constructor(public activeModal: NgbActiveModal,
+    public titanService: TitanService) { }
 
   ngOnInit() {
+    this.titanService.getTaskHistory(this.id).subscribe(taskdata => {
+     // this.notes = notesdata.notes;
+     this.taskhistory = taskdata.taskHistory;
+console.log(this.taskhistory)
+    },
+      err => {
+        console.log('An error has occured while retreving data from Titan Seo');
+      }
+    )
   }
 
 }

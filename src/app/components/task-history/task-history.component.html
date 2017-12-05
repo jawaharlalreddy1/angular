@@ -1,3 +1,22 @@
-<p>
-  task-history works!
-</p>
+<div class="modal-header bg-light">
+    <h4 class="modal-title">Task History</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">     
+    <!--  <app-add-note (noteAdded)="addNote($event)"></app-add-note>
+      <h6>Notes History</h6>
+      <hr class="bg-info active">
+      <div *ngIf="notes?.length > 0;else noClients">
+      <app-note *ngFor="let note of notes" [note]="note"></app-note>     
+    </div>-->
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-info fa fa-window-close-o" (click)="activeModal.close('Close click')"> Close</button>
+  </div>
+  
+  <ng-template #noClients>
+      <h6>There are no task history available!</h6>
+    </ng-template>
+  
