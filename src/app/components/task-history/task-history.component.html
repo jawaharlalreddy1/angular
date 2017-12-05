@@ -1,22 +1,66 @@
 <div class="modal-header bg-light">
-    <h4 class="modal-title">Task History</h4>
-    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">     
-    <!--  <app-add-note (noteAdded)="addNote($event)"></app-add-note>
+  <h4 class="modal-title">Task History</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <!--  <app-add-note (noteAdded)="addNote($event)"></app-add-note>
       <h6>Notes History</h6>
       <hr class="bg-info active">
       <div *ngIf="notes?.length > 0;else noClients">
       <app-note *ngFor="let note of notes" [note]="note"></app-note>     
     </div>-->
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-info fa fa-window-close-o" (click)="activeModal.close('Close click')"> Close</button>
-  </div>
-  
-  <ng-template #noClients>
-      <h6>There are no task history available!</h6>
+  <table class="table table-hover" *ngIf="taskhistory?.length > 0;else taskHistory">
+    <thead class="bg-light">
+      <tr>
+        <th>Task Description</th>
+        <th>User</th>
+        <th>Date Time</th>
+        <th>Status</th>
+      </tr>
+    </thead>  
+    <ng-template let-task ngFor [ngForOf]="taskhistory" let-i="index">
+      <tbody>
+        <tr data-toggle="collapse" [attr.data-target]="'#'+i" class="clickable">
+          <td>{{task.taskDescription}}</td>
+          <td>{{task.user}}</td>
+          <td>{{task.dateTimeStamp | date:'medium'}}</td>
+          <td>{{task.status}}</td>
+        </tr>
+        <tr>
+          <td colspan="7">
+            <div [attr.id]="i" class="collapse">
+              <table *ngIf="task.taskHistoryDetails?.length > 0;else taskDetails" class="table table-sm table-bordered">
+                <thead class="bg-light">
+                  <tr>
+                    <th>Result Name</th>
+                    <th>Result Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let taskdetail of task.taskHistoryDetails">
+                    <td>{{taskdetail.resultName}}</td>
+                    <td>{{taskdetail.resultValue}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </tbody>
     </ng-template>
-  
+  </table>
+
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-info fa fa-window-close-o" (click)="activeModal.close('Close click')"> Close</button>
+</div>
+
+<ng-template #taskHistory>
+  <h6>There is no task history available!</h6>
+</ng-template>
+
+<ng-template #taskDetails>
+  <h6>There are no disposition available for this task!</h6>
+</ng-template>
