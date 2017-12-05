@@ -1,30 +1,3 @@
-<div id="clientdetails" role="tablist" aria-multiselectable="true">
-  <div class="card">
-    <div class="card-header" role="tab" id="headingthree">
-      <h6 class="mb-0">
-        <a data-toggle="collapse" data-parent="#clientdetails" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-          Client Details
-        </a>
-      </h6>
-    </div>
-
-    <div id="collapseThree" class="collapse show" role="tabpanel" aria-labelledby="headingThree">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-sm-6">
-            <h5 class="h6">First Name: <small class="text-dark text-capitalize"> Jawaharlal</small></h5>        
-            <h6>Phone: <small class="text-dark text-capitalize"> 1234</small></h6>         
-          </div>
-          <div class="col-sm-6">
-            <h6>Last Name: <small class="text-dark"> Vutukuru</small></h6>       
-            <h6>Email: <small class="text-dark"> Vutukuru</small></h6>   
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <br>
-
 <div id="mcinfo" role="tablist" aria-multiselectable="true">
   <div class="card">
     <div class="card-header" role="tab" id="headingTwo">
@@ -39,12 +12,12 @@
       <div class="card-body">
         <div class="row">
           <div class="col-sm-6">
-            <h5 class="h6">First Name: <small class="text-dark text-capitalize"> Jawaharlal</small></h5>        
-            <h6>Phone: <small class="text-dark text-capitalize"> 1234</small></h6>         
+            <h5 class="h6">First Name: <small class="text-dark text-capitalize"> {{mcinfo.mcFirstName}}</small></h5>        
+            <h6>Phone: <small class="text-dark text-capitalize"> {{mcinfo.mcPhone}}</small></h6>         
           </div>
           <div class="col-sm-6">
-            <h6>Last Name: <small class="text-dark"> Vutukuru</small></h6>       
-            <h6>Email: <small class="text-dark"> Vutukuru</small></h6>   
+            <h6>Last Name: <small class="text-dark"> {{mcinfo.mcLastName}}</small></h6>       
+            <h6>Email: <small class="text-dark"> {{mcinfo.mcEmail}}</small></h6>   
           </div>
         </div>
       </div>
@@ -66,12 +39,12 @@
       <div class="card-body">
         <div class="row">
           <div class="col-sm-6">
-            <h5 class="h6">First Name: <small class="text-dark text-capitalize"> Jawaharlal</small></h5>        
-            <h6>Phone: <small class="text-dark text-capitalize"> 1234</small></h6>         
+            <h5 class="h6">First Name: <small class="text-dark text-capitalize"> {{cminfo.cmFirstName}}</small></h5>        
+            <h6>Phone: <small class="text-dark text-capitalize"> {{cminfo.cmPhone}}</small></h6>         
           </div>
           <div class="col-sm-6">
-            <h6>Last Name: <small class="text-dark"> Vutukuru</small></h6>       
-            <h6>Email: <small class="text-dark"> Vutukuru</small></h6>   
+            <h6>Last Name: <small class="text-dark"> {{cminfo.cmLastName}}</small></h6>       
+            <h6>Email: <small class="text-dark"> {{cminfo.cmEmail}}</small></h6>   
           </div>
         </div>
       </div>

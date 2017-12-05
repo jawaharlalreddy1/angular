@@ -1,3 +1,30 @@
+<div id="clientdetails" role="tablist" aria-multiselectable="true">
+    <div class="card">
+      <div class="card-header" role="tab" id="headingthree">
+        <h6 class="mb-0">
+          <a data-toggle="collapse" data-parent="#clientdetails" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Client Details
+          </a>
+        </h6>
+      </div>
+  
+      <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-6">
+              <h5 class="h6">First Name: <small class="text-dark text-capitalize"> {{ seoheader?.FirstName}}</small></h5>        
+              <h6>Phone: <small class="text-dark text-capitalize"> {{ seoheader?.Phone}}</small></h6>         
+            </div>
+            <div class="col-sm-6">
+              <h6>Last Name: <small class="text-dark"> {{ seoheader?.LastName}}</small></h6>       
+              <h6>Email: <small class="text-dark"> {{ seoheader?.EmailID}}</small></h6>   
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
 <div id="seodetails" role="tablist" aria-multiselectable="true">
   <div class="card">
     <div class="card-header" role="tab" id="headingFour">

@@ -22,11 +22,12 @@ import { NavbarsecondaryComponent } from './components/navbarsecondary/navbarsec
 import { NotesComponent } from './components/notes/notes.component';
 import { TaskHistoryComponent } from './components/task-history/task-history.component';
 import { AddNoteComponent } from './components/add-note/add-note.component';
-import { NoteComponent } from './components/note/note.component'
+import { NoteComponent } from './components/note/note.component';
+import {EsbService} from './services/ESB/esb.service';
 // Create Routes
 const appRoutes: Routes = [
   {path:'', component: MytasksComponent},
-  {path:'seo/:id/:enterpriseItemId/:pid', component: SeoinfoComponent}
+  {path:'seo/:id/:enterpriseItemId/:pid/:enterpriseAcctId', component: SeoinfoComponent}
  // ,{path:'notes', component: NotesComponent}
 ];
 
@@ -57,7 +58,9 @@ const appRoutes: Routes = [
     MatDialogModule,
     NgbModule.forRoot()
   ],
-  providers: [TitanService],
+  providers: [
+    TitanService,
+    EsbService],
   entryComponents:[NotesComponent],
   bootstrap: [AppComponent]
 })
