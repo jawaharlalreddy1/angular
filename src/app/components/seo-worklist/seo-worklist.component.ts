@@ -1,7 +1,8 @@
 import { CamundaService } from './../../services/camunda/camunda.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { TitanService } from '../../services/titan/titan.service';
 import { Tasks } from '../../models/tasks';
+import {SharedDataService} from '../../services/shared-data.service';
 
 @Component({
   selector: 'app-seo-worklist',
@@ -10,13 +11,15 @@ import { Tasks } from '../../models/tasks';
 })
 export class SeoWorklistComponent implements OnInit {
   tasks:Tasks[];
-
-  user: string = 'demo';
+  userId:string;
+  user: string = 'demo';  
   constructor(private camundaservice: CamundaService,
-  private titanService:TitanService) { }
+  private titanService:TitanService,
+  private shareddataservice:SharedDataService) { }
 
   ngOnInit() {
-    this.titanService.getAssignedTasks(this.user).subscribe(tasks => {
+    this.userId = this.shareddataservice.userId; 
+    this.titanService.getAssignedTasks(this.userId,false).subscribe(tasks => {
       console.log(tasks);
       this.tasks = tasks.data;
       console.log(this.tasks);
@@ -27,8 +30,11 @@ export class SeoWorklistComponent implements OnInit {
     )   
   }
 
-  claim(taskId:string ,userId:string,task:Tasks){
-    this.camundaservice.claimTask(userId ,taskId).subscribe(res => {
+  claim(taskId:string ,task:Tasks){
+    console.log('userId'+this.userId);  
+    console.log('taskId'+taskId);
+    console.log('task'+task);
+    this.camundaservice.claimTask(this.userId ,taskId).subscribe(res => {
       console.log(res);
       for(let i = 0;i < this.tasks.length;i++){
         if(task == this.tasks[i]){

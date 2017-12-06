@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AuthService } from './../../services/auth.service';
 import { auth } from 'firebase/app';
+import { SharedDataService } from '../../services/shared-data.service';
 
 @Component({
   selector: 'app-navbar',
@@ -18,7 +19,8 @@ export class NavbarComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private flashMessagesService: FlashMessagesService
+    private flashMessagesService: FlashMessagesService,
+    private shareddataservice: SharedDataService
   ) { }
 
   ngOnInit() {
@@ -26,12 +28,14 @@ export class NavbarComponent implements OnInit {
       if (auth) {
         this.isLoggedIn = true;
         this.loggedInUser = auth.email;
+        this.shareddataservice.userId = this.loggedInUser;
       } else {
         this.isLoggedIn = false;
       }
     })
 
   }
+
 
   onLogOutClick() {
     this.authService.logOut();

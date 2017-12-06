@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TitanService } from '../../services/titan/titan.service';
 import { Tasks } from '../../models/tasks';
+import {SharedDataService} from '../../services/shared-data.service';
 
 
 @Component({
@@ -10,13 +11,14 @@ import { Tasks } from '../../models/tasks';
 })
 export class MyseotasksComponent implements OnInit {
 
-  tasks: any[];
-  user: string = 'demo';
-
-  constructor(private titanService: TitanService) { }
+  tasks: any[];  
+  user:string;
+  constructor(private titanService: TitanService,
+    private shareddataservice:SharedDataService) { }
 
   ngOnInit() {
-    this.titanService.getAssignedTasks(this.user).subscribe(tasks => {
+    this.user = this.shareddataservice.userId; 
+    this.titanService.getAssignedTasks(this.user,true).subscribe(tasks => {
       console.log(tasks);
       this.tasks = tasks.data;
       console.log(this.tasks);

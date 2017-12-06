@@ -33,6 +33,7 @@ import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guards';
 import {SeoWorklistComponent} from '../app/components/seo-worklist/seo-worklist.component'
 import { CamundaService } from './services/camunda/camunda.service';
+import {SharedDataService} from '../app/services/shared-data.service';
 // Create Routes
 const appRoutes: Routes = [
   { path: '', component: MytasksComponent,canActivate:[AuthGuard] },
@@ -81,7 +82,8 @@ const appRoutes: Routes = [
   AngularFireDatabaseModule,
   AuthService,
   AuthGuard,
-  CamundaService
+  CamundaService,
+  SharedDataService
 ],  
   entryComponents: [
     NotesComponent,
