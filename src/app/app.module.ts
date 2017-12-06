@@ -1,3 +1,6 @@
+import { environment } from './../environments/environment';
+import { AngularFireAuth, AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabase, AngularFireDatabaseModule } from 'angularfire2/database';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -7,7 +10,7 @@ import { MatButtonModule, MatCheckboxModule, MatInputModule, MatDialogModule } f
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { AngularFireModule } from 'angularfire2'
 
 
 import { AppComponent } from './app.component';
@@ -24,11 +27,18 @@ import { TaskHistoryComponent } from './components/task-history/task-history.com
 import { AddNoteComponent } from './components/add-note/add-note.component';
 import { NoteComponent } from './components/note/note.component';
 import { EsbService } from './services/ESB/esb.service';
+import { LoginComponent } from './components/login/login.component';
+import {FlashMessagesModule} from 'angular2-flash-messages/module';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './guards/auth.guards';
+import {SeoWorklistComponent} from '../app/components/seo-worklist/seo-worklist.component'
 // Create Routes
 const appRoutes: Routes = [
-  { path: '', component: MytasksComponent },
-  { path: 'seo/:id/:enterpriseItemId/:pid/:enterpriseAcctId', component: SeoinfoComponent }
+  { path: '', component: MytasksComponent,canActivate:[AuthGuard] },
+  { path: 'seo/:id/:enterpriseItemId/:pid/:enterpriseAcctId', component: SeoinfoComponent,canActivate:[AuthGuard] },
+  { path: 'seogroup', component: SeoWorklistComponent,canActivate:[AuthGuard] },
   // ,{path:'notes', component: NotesComponent}
+  {path:'login', component: LoginComponent},
 ];
 
 @NgModule({
@@ -45,22 +55,32 @@ const appRoutes: Routes = [
     TaskHistoryComponent,
     AddNoteComponent,
     NoteComponent,
+    LoginComponent,
+    SeoWorklistComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule,       
     MatButtonModule,
     MatCheckboxModule,
     MatInputModule,
     MatDialogModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebase,'clientpanel'),
+    AngularFireAuthModule,
+    FlashMessagesModule.forRoot()
   ],
   providers: [
     TitanService,
-    EsbService],
+    EsbService,
+  AngularFireDatabase,
+  AngularFireDatabaseModule,
+  AuthService,
+  AuthGuard
+],  
   entryComponents: [
     NotesComponent,
     TaskHistoryComponent],

@@ -11,18 +11,27 @@
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link text-Light" href="#" routerLink="/">My Tasks</a>
+        <a *ngIf="isLoggedIn"  class="nav-link text-Light" href="#" routerLink="/">My Tasks</a>
       </li>
       <li class="nav-item dropdown">
-        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">My Group Tasks</a>
+        <a *ngIf="isLoggedIn"  href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Group Tasks</a>
         <div class="dropdown-menu">
-          <a href="#" class="dropdown-item bg-light">Seo Group Tasks</a>
-          <a href="#" class="dropdown-item bg-light">Olm Group Tasks</a>
+          <a href="#" routerLink="/seogroup" class="dropdown-item bg-light">Seo</a>
+          <a href="#" class="dropdown-item bg-light">Olm</a>
         </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" routerLink="/login">Login</a>
+      <li *ngIf="!isLoggedIn" class="nav-item">
+        <a class="nav-link fa fa-sign-in" href="#" routerLink="/login"> Login</a>
       </li>
+
+      <li *ngIf="isLoggedIn" class="nav-item">
+        <a class="nav-link" href="#">{{loggedInUser}}</a>
+      </li>
+
+      <li *ngIf="isLoggedIn" class="nav-item">
+        <a class="nav-link fa fa-sign-out" href="#" (click)="onLogOutClick()"> Logout</a>
+      </li>
+
     </ul>
     <!--
       <ul class="navbar-nav ml-auto">
