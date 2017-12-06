@@ -1,3 +1,40 @@
-<p>
-  seo-worklist works!
-</p>
+<div class="row justify-content-around">
+  <div class="col">
+    <h5 class="text-dark active">
+      <i class="fa fa-tasks"></i> Seo Group Tasks</h5>
+  </div>
+</div>
+<hr class="bg-info active">
+<table *ngIf="tasks?.length > 0;else noClients" class="table table-sm table-bordered">
+  <thead class="thead">
+    <tr class="bg-info">
+      <th class="text-dark font-weight-bold  h6">Enterprise Acct Id</th>
+      <th class="text-dark font-weight-bold h6">Enterprise Item Id</th>
+      <th class="text-dark font-weight-bold h6">Product Type</th>
+      <th class="text-dark font-weight-bold h6">Product Tier</th>
+      <th class="text-dark font-weight-bold h6">Sales Channel</th>
+      <th class="text-dark font-weight-bold h6">Transaction Type</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let task of tasks">
+      <td>{{task.enterpriseAccountId}}</td>
+      <td>{{task.enterpriseItemId}}</td>
+      <td>{{task.producttype}}</td>
+      <td>{{task.productTier}}</td>
+      <td>{{task.salesChannelCode}}</td>
+      <td>{{task.transactionType}}</td>
+      <td>
+        <a href="" class="btn btn-outline-info acive btn-sm" (click)="claim(task.id,'z990758',task)" onclick="return false;">
+          <i class="fa fa-arrow-circle-o-right"></i> Claim</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #noClients>
+  <h6>There are no tasks in the group list!</h6>
+</ng-template>
+
+

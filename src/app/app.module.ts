@@ -32,6 +32,7 @@ import {FlashMessagesModule} from 'angular2-flash-messages/module';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guards';
 import {SeoWorklistComponent} from '../app/components/seo-worklist/seo-worklist.component'
+import { CamundaService } from './services/camunda/camunda.service';
 // Create Routes
 const appRoutes: Routes = [
   { path: '', component: MytasksComponent,canActivate:[AuthGuard] },
@@ -79,7 +80,8 @@ const appRoutes: Routes = [
   AngularFireDatabase,
   AngularFireDatabaseModule,
   AuthService,
-  AuthGuard
+  AuthGuard,
+  CamundaService
 ],  
   entryComponents: [
     NotesComponent,
