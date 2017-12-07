@@ -34,6 +34,7 @@ import { AuthGuard } from './guards/auth.guards';
 import {SeoWorklistComponent} from '../app/components/seo-worklist/seo-worklist.component'
 import { CamundaService } from './services/camunda/camunda.service';
 import {SharedDataService} from '../app/services/shared-data.service';
+import {NgxPaginationModule} from 'ngx-pagination';
 // Create Routes
 const appRoutes: Routes = [
   { path: '', component: MytasksComponent,canActivate:[AuthGuard] },
@@ -73,7 +74,8 @@ const appRoutes: Routes = [
     NgbModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase,'clientpanel'),
     AngularFireAuthModule,
-    FlashMessagesModule.forRoot()
+    FlashMessagesModule.forRoot(),
+    NgxPaginationModule
   ],
   providers: [
     TitanService,

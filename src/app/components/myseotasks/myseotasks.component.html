@@ -18,7 +18,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let task of tasks">
+    <tr *ngFor="let task of tasks | paginate: { itemsPerPage: 10, currentPage: p }">
       <td>{{task.enterpriseAccountId}}</td>
       <td>{{task.enterpriseItemId}}</td>
       <td>{{task.producttype}}</td>
@@ -32,6 +32,8 @@
     </tr>
   </tbody>
 </table>
+
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
 
 <ng-template #noClients>
   <h6>There are no tasks assigned to you!</h6>
