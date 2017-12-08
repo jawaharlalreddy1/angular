@@ -44,7 +44,7 @@ export class NavbarsecondaryComponent implements OnInit {
       this.flashMessagesService.show('Task has been completed', {
         cssClass: 'alert-success', timeout: 4000
       });
-      this.router.navigate(['/']);
+      this.router.navigate(['/myseo']);
     })
   }
 
