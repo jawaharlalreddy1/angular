@@ -29,9 +29,10 @@ export class TitanService {
     if (assigned) {
       req = '&assignee=' + user + '&assigned=true';
     } else {
-      req = '&unassigned=true';
+      req = '&candidateGroup=SEOAllUsers&unassigned=true';
     }
-    return this.http.get<Taskres>('https://localhost:3000/seo/get/bpmsTasks/processDefinitionName/?processDefinitionName=SampleProject' + req, {
+    
+    return this.http.get<Taskres>('https://localhost:3000/seo/get/bpmsTasks/processDefinitionName/?processDefinitionKey=SEONewProcess' + req, {
       headers: headers
     })
       .map(res => res)
@@ -114,5 +115,26 @@ export class TitanService {
       .map(res => res
       )
   };
+
+  addTaskHistory(taskhistory){
+    let username: string = 'ESB';
+    let password: string = 'BdL5C35jwNC2K6Vs';
+    let headers = new HttpHeaders().set(
+      'Authorization', 'Basic ' + btoa(username + ":" + password
+      ));
+
+    headers = headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
+    headers = headers.append('Access-Control-Allow-Credentials', 'true');
+    headers = headers.append('Content-Type', 'application/json');
+    headers = headers.append('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS, POST, PUT, DELETE');
+    console.log(taskhistory);
+    console.log(JSON.stringify(taskhistory));
+    return this.http.post('https://localhost:4000/common/post/taskHistory', JSON.stringify(taskhistory), {
+      headers: headers
+    })
+      .map(res => res
+      )
+
+  }
 
 }

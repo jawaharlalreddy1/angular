@@ -2,6 +2,6 @@ import { TaskHistory } from "./taskHistory";
 
 export interface TaskHistoryHeader {
     enterpriseItemid?:string;
-    parentProcessId?:number;
+    parentProcessId?:string;
     taskHistory:Array<TaskHistory>;
 }

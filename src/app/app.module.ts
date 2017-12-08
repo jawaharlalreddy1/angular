@@ -35,9 +35,10 @@ import {SeoWorklistComponent} from '../app/components/seo-worklist/seo-worklist.
 import { CamundaService } from './services/camunda/camunda.service';
 import {SharedDataService} from '../app/services/shared-data.service';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { DatePipe } from '@angular/common';
 // Create Routes
 const appRoutes: Routes = [
-  { path: '', component: MytasksComponent,canActivate:[AuthGuard] },
+  { path: 'myseo', component: MytasksComponent,canActivate:[AuthGuard] },
   { path: 'seo/:id/:enterpriseItemId/:pid/:enterpriseAcctId', component: SeoinfoComponent,canActivate:[AuthGuard] },
   { path: 'seogroup', component: SeoWorklistComponent,canActivate:[AuthGuard] },
   // ,{path:'notes', component: NotesComponent}
@@ -75,7 +76,7 @@ const appRoutes: Routes = [
     AngularFireModule.initializeApp(environment.firebase,'clientpanel'),
     AngularFireAuthModule,
     FlashMessagesModule.forRoot(),
-    NgxPaginationModule
+    NgxPaginationModule    
   ],
   providers: [
     TitanService,
@@ -85,7 +86,8 @@ const appRoutes: Routes = [
   AuthService,
   AuthGuard,
   CamundaService,
-  SharedDataService
+  SharedDataService,
+  DatePipe
 ],  
   entryComponents: [
     NotesComponent,
