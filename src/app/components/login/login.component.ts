@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
         this.flashMessagesService.show('You are logged in', {
           cssClass: 'alert-success', timeout: 4000
         });
-        this.router.navigate(['/'])
+        this.router.navigate(['/myseo'])
       })
       .catch((err) => {
         this.flashMessagesService.show(err.message, {

@@ -11,29 +11,38 @@
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item dropdown">
-        <a *ngIf="isLoggedIn"  href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" >My Tasks</a>
+        <a *ngIf="isLoggedIn"  href="#" class="btn btn-outline-light text-dark dropdown-toggle" data-toggle="dropdown" >My Tasks</a>
         <div class="dropdown-menu">
-          <a href="#" routerLink="/myseo" class="dropdown-item bg-light">Seo</a>
-          <a href="#" class="dropdown-item bg-light">Olm</a>
+          <a href="#" routerLink="/myseo" class="dropdown-item bg-light dropdown-item">Seo</a>
+          <a href="#" class="dropdown-item bg-light dropdown-item">Olm</a>
         </div>
       </li>
       <li class="nav-item dropdown">
-        <a *ngIf="isLoggedIn"  href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Group Tasks</a>
+        <a *ngIf="isLoggedIn"  href="#" class="btn btn-outline-light text-dark dropdown-toggle" data-toggle="dropdown">Group Tasks</a>
         <div class="dropdown-menu">
           <a href="#" routerLink="/seogroup" class="dropdown-item bg-light">Seo</a>
           <a href="#" class="dropdown-item bg-light">Olm</a>
         </div>
       </li>
+
+      <li class="nav-item dropdown">
+        <a *ngIf="isLoggedIn"  href="#" class="btn btn-outline-light text-dark dropdown-toggle" data-toggle="dropdown">Completed Tasks</a>
+        <div class="dropdown-menu">
+          <a href="#" routerLink="/completedseo" class="dropdown-item bg-light">Seo</a>
+          <a href="#" class="dropdown-item bg-light">Olm</a>
+        </div>
+      </li>
+      
       <li *ngIf="!isLoggedIn" class="nav-item">
-        <a class="nav-link fa fa-sign-in" href="#" routerLink="/login"> Login</a>
+        <a class="nav-link fa fa-sign-in text-dark btn btn-outline-light" href="#" routerLink="/login"> Login</a>
       </li>
 
       <li *ngIf="isLoggedIn" class="nav-item">
-        <a class="nav-link" href="#">{{loggedInUser}}</a>
+        <a class="nav-link text-dark" href="#">{{loggedInUser}}</a>
       </li>
 
       <li *ngIf="isLoggedIn" class="nav-item">
-        <a class="nav-link fa fa-sign-out" href="#" (click)="onLogOutClick()"> Logout</a>
+        <a class="nav-link fa fa-sign-out text-dark btn btn-outline-light" href="/login" (click)="onLogOutClick()"> Logout</a>
       </li>
 
     </ul>
