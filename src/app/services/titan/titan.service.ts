@@ -14,9 +14,10 @@ export class TitanService {
 
   constructor(public http: HttpClient) { }
 
-  getAssignedTasks(user: string, assigned: boolean): Observable<Taskres> {
+  getAssignedTasks(user: string, assigned: boolean,history:boolean): Observable<Taskres> {
 
-    let req: string
+    let req: string;
+    let url:string;
     let username: string = 'ESB';
     let password: string = 'BdL5C35jwNC2K6Vs';
     let headers = new HttpHeaders().set(
@@ -26,13 +27,19 @@ export class TitanService {
     headers = headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
     headers = headers.append('Access-Control-Allow-Credentials', 'true');
     headers = headers.append('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS, POST, PUT, DELETE');
+    if(history){
+      req = '&processDefinitionKeyIn=SEONewProcess&assignee=' + user + '&assigned=true';
+      url = 'https://localhost:3000/seo/get/bpmsTasks/processDefinitionName/history/?processDefinitionKey=SEONewProcess';
+    }else{    
     if (assigned) {
-      req = '&assignee=' + user + '&assigned=true';
+      req = '&processDefinitionKeyIn=SEONewProcess&assignee=' + user + '&assigned=true';
+      url = 'https://localhost:3000/seo/get/bpmsTasks/processDefinitionName/inprogress/?processDefinitionKey=SEONewProcess';
     } else {
       req = '&candidateGroup=SEOAllUsers&unassigned=true';
-    }
+      url = 'https://localhost:3000/seo/get/bpmsTasks/processDefinitionName/inprogress/?processDefinitionKey=SEONewProcess';
+    }}
     
-    return this.http.get<Taskres>('https://localhost:3000/seo/get/bpmsTasks/processDefinitionName/?processDefinitionKey=SEONewProcess' + req, {
+    return this.http.get<Taskres>(url + req, {
       headers: headers
     })
       .map(res => res)

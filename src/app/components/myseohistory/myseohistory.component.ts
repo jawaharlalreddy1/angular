@@ -3,14 +3,12 @@ import { TitanService } from '../../services/titan/titan.service';
 import { Tasks } from '../../models/tasks';
 import {SharedDataService} from '../../services/shared-data.service';
 
-
 @Component({
-  selector: 'app-myseotasks',
-  templateUrl: './myseotasks.component.html',
-  styleUrls: ['./myseotasks.component.css']
+  selector: 'app-myseohistory',
+  templateUrl: './myseohistory.component.html',
+  styleUrls: ['./myseohistory.component.css']
 })
-export class MyseotasksComponent implements OnInit {
-
+export class MyseohistoryComponent implements OnInit {
   tasks: any[];  
   user:string;
   constructor(private titanService: TitanService,
@@ -18,7 +16,7 @@ export class MyseotasksComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.shareddataservice.userId; 
-    this.titanService.getAssignedTasks(this.user,true,false).subscribe(tasks => {
+    this.titanService.getAssignedTasks(this.user,true,true).subscribe(tasks => {
       console.log(tasks);
       this.tasks = tasks.data;
       console.log(this.tasks);
@@ -29,4 +27,5 @@ export class MyseotasksComponent implements OnInit {
     )
 
   }
+
 }

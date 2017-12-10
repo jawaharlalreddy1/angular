@@ -5,7 +5,9 @@
   </button>
 </div>
 <div class="modal-body">     
+  <div *ngIf="history!='true'">
     <app-add-note (noteAdded)="addNote($event)"></app-add-note>
+  </div>
     <h6>Notes History</h6>
     <hr class="bg-info active">
     <div *ngIf="notes?.length > 0;else noClients">

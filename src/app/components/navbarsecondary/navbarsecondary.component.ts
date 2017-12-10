@@ -15,6 +15,7 @@ export class NavbarsecondaryComponent implements OnInit {
   productInstanceId: number;
   taskId: string;
   enterpriseItemId: string;
+  history:boolean;
   constructor(private modalService: NgbModal,
     private router: Router,
     private route: ActivatedRoute,
@@ -25,11 +26,13 @@ export class NavbarsecondaryComponent implements OnInit {
     this.productInstanceId = this.route.snapshot.params['pid'];
     this.taskId = this.route.snapshot.params['id'];
     this.enterpriseItemId = this.route.snapshot.params['enterpriseItemId'];
+    this.history = this.route.snapshot.params['history'];
   }
 
   openNotes() {
     const modalRef = this.modalService.open(NotesComponent, { size: 'lg', backdrop: 'static' });
     modalRef.componentInstance.id = this.enterpriseItemId;
+    modalRef.componentInstance.history = this.history;
     //  console.log('text'+this.productinstanceid);
   }
   openTaskHistory() {

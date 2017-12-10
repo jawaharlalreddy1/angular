@@ -1,7 +1,7 @@
 <div class="row justify-content-around">
   <div class="col">
     <h5 class="text-dark active">
-      <i class="fa fa-tasks"></i> My Seo Tasks</h5>
+      <i class="fa fa-tasks"></i> My Seo Completed Tasks</h5>
   </div>
 </div>
 <hr class="bg-info active">
@@ -26,7 +26,7 @@
       <td>{{task.salesChannelCode}}</td>
       <td>{{task.transactionType}}</td>
       <td>
-        <a [routerLink]="['/seo/'+task.id+'/'+task.enterpriseItemId+'/'+task.productinstance+'/'+task.enterpriseAccountId+'/'+false]" href="" class="btn btn-outline-info acive btn-sm">
+        <a [routerLink]="['/seo/'+task.id+'/'+task.enterpriseItemId+'/'+task.productinstance+'/'+task.enterpriseAccountId+'/'+true]" href="" class="btn btn-outline-info acive btn-sm">
           <i class="fa fa-arrow-circle-o-right"></i> Details</a>
       </td>
     </tr>

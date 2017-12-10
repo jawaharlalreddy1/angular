@@ -12,11 +12,13 @@ import { NotesRes } from '../../models/common/notesRes';
 })
 export class NotesComponent implements OnInit {
   @Input() id;
+  @Input() history;
   notes: Notes[];
   constructor(public activeModal: NgbActiveModal,
     public titanService: TitanService) { }
   note: any[] = [];
   ngOnInit() {
+    console.log('notes'+this.history);
     this.titanService.getNotes(this.id).subscribe(notesdata => {
       this.notes = notesdata.notes;
       if (this.notes === undefined) {

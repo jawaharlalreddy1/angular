@@ -29,7 +29,7 @@ export class SeoWorklistComponent implements OnInit {
 
   ngOnInit() {
     this.userId = this.shareddataservice.userId;
-    this.titanService.getAssignedTasks(this.userId, false).subscribe(tasks => {
+    this.titanService.getAssignedTasks(this.userId, false,false).subscribe(tasks => {
       console.log(tasks);
       this.tasks = tasks.data;
       console.log(this.tasks);

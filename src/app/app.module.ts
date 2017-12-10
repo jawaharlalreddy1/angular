@@ -36,11 +36,14 @@ import { CamundaService } from './services/camunda/camunda.service';
 import {SharedDataService} from '../app/services/shared-data.service';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { DatePipe } from '@angular/common';
+import { MyseohistoryComponent } from './components/myseohistory/myseohistory.component';
+import { MileStoneComponent } from './components/mile-stone/mile-stone.component';
 // Create Routes
 const appRoutes: Routes = [
   { path: 'myseo', component: MytasksComponent,canActivate:[AuthGuard] },
-  { path: 'seo/:id/:enterpriseItemId/:pid/:enterpriseAcctId', component: SeoinfoComponent,canActivate:[AuthGuard] },
+  { path: 'seo/:id/:enterpriseItemId/:pid/:enterpriseAcctId/:history', component: SeoinfoComponent,canActivate:[AuthGuard] },
   { path: 'seogroup', component: SeoWorklistComponent,canActivate:[AuthGuard] },
+  { path: 'myseohistory', component: MyseohistoryComponent,canActivate:[AuthGuard] },
   // ,{path:'notes', component: NotesComponent}
   {path:'login', component: LoginComponent},
 ];
@@ -61,6 +64,8 @@ const appRoutes: Routes = [
     NoteComponent,
     LoginComponent,
     SeoWorklistComponent,
+    MyseohistoryComponent,
+    MileStoneComponent,
   ],
   imports: [
     BrowserModule,
