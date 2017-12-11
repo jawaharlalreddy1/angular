@@ -1,3 +1,52 @@
-<p>
-  mile-stone works!
-</p>
+<div class="modal-header bg-light">
+  <h4 class="modal-title">Milestones</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span class="fa fa-times" aria-hidden="true"></span>
+  </button>
+</div>
+<div class="modal-body">
+  <h6>Transaction Type: {{ transactionType}}</h6>
+  <hr>
+  <div class="row bs-wizard" style="border-bottom:0;">
+
+    <div class="col bs-wizard-step complete">
+      <div class="text-center bs-wizard-stepnum">Order received</div>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated"></div>
+      </div>
+      <a href="#" class="bs-wizard-dot" onclick="return false;"></a>
+    </div>
+    <div class="col bs-wizard-step complete">
+      <div class="text-center bs-wizard-stepnum">Fulfilment Inprogress</div>
+      <div class="progress progress-bar-striped progress-bar-animated">
+        <div class="progress-bar progress-bar-striped progress-bar-animated"></div>
+      </div>
+      <a href="#" class="bs-wizard-dot" onclick="return false;"></a>
+    </div>
+
+    <div [ngClass]="getClass()" >
+      <!-- complete -->
+      <div class="text-center bs-wizard-stepnum">Fulfilment Completed</div>
+      <div class="progress">
+        <div class="progress-bar"></div>
+      </div>
+      <a href="#" class="bs-wizard-dot" onclick="return false;"></a>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-info fa fa-window-close-o" (click)="activeModal.close('Close click')"> Close</button>
+</div>
+
+<ng-template #noClients>
+  <h6>There are no notes available!</h6>
+</ng-template>

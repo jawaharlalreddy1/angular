@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { TaskHistoryComponent } from '../task-history/task-history.component';
 import { CamundaService } from './../../services/camunda/camunda.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { MileStoneComponent } from '../mile-stone/mile-stone.component';
 
 @Component({
   selector: 'app-navbarsecondary',
@@ -37,6 +38,12 @@ export class NavbarsecondaryComponent implements OnInit {
   }
   openTaskHistory() {
     const modalRef = this.modalService.open(TaskHistoryComponent, { size: 'lg', backdrop: 'static' });
+    modalRef.componentInstance.id = this.enterpriseItemId;
+    //  console.log('text'+this.productinstanceid);
+  }
+
+  openMilestone() {
+    const modalRef = this.modalService.open(MileStoneComponent, { size: 'lg', backdrop: 'static' });
     modalRef.componentInstance.id = this.enterpriseItemId;
     //  console.log('text'+this.productinstanceid);
   }

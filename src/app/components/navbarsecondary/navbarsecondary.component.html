@@ -6,7 +6,7 @@
       <a class="nav-link btn btn-outline-info acive fa fa-history"  (click)="openTaskHistory()" onclick="return false;"  href=""> Task History</a>
   </li>
   <li class="nav-item">
-      <a class="nav-link btn btn-outline-info acive fa fa-arrows-h" href="#"> Milestones</a>
+      <a class="nav-link btn btn-outline-info acive fa fa-arrows-h" (click)="openMilestone()"  onclick="return false;"   href="#"> Milestones</a>
   </li>
   <li *ngIf="history!='true'" class="nav-item">
     <a class="nav-link btn btn-outline-info acive fa fa-floppy-o" href="#"> Save</a>

@@ -96,7 +96,8 @@ const appRoutes: Routes = [
 ],  
   entryComponents: [
     NotesComponent,
-    TaskHistoryComponent],
+    TaskHistoryComponent,
+    MileStoneComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
