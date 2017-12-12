@@ -1,8 +1,19 @@
 <app-navbarsecondary></app-navbarsecondary>
 
+
 <br>
-<div class="row">
-  <div class="col-md-6">
+<h4>SEO Information</h4>
+<hr class="bg-info active">
+
+<app-mcinfo></app-mcinfo>
+
+<br>
+<h4>Product Details</h4>
+<hr class="bg-info active">
+
+<app-seodetails></app-seodetails>
+<div class="row float-md-right">
+  <div class="col float-md-right">
     <a [routerLink]="['/'+routeto]" href="#" class="btn btn-link text-info active">
       <i class="fa fa-arrow-circle-o-left"></i> {{ backto}}
     </a>    
@@ -14,14 +25,3 @@
     </div>
   </div>-->
 </div>
-<br>
-<h4>SEO Information</h4>
-<hr class="bg-info active">
-
-<app-mcinfo></app-mcinfo>
-
-<br>
-<h4>Product Details</h4>
-<hr class="bg-faded active">
-
-<app-seodetails></app-seodetails>

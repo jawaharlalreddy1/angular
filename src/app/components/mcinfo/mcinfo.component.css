@@ -1,3 +1,7 @@
 small {
     font-size: 90%;
 }
+
+.card .card-header {
+    height:37px
+   }

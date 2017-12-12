@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule,HTTP_INTERCEPTORS  } from '@angular/common/http';
 import { MatButtonModule, MatCheckboxModule, MatInputModule, MatDialogModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
@@ -38,6 +38,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { DatePipe } from '@angular/common';
 import { MyseohistoryComponent } from './components/myseohistory/myseohistory.component';
 import { MileStoneComponent } from './components/mile-stone/mile-stone.component';
+import { NgProgressModule, NgProgressInterceptor } from 'ngx-progressbar';
+
 // Create Routes
 const appRoutes: Routes = [
   { path: 'myseo', component: MytasksComponent,canActivate:[AuthGuard] },
@@ -81,7 +83,9 @@ const appRoutes: Routes = [
     AngularFireModule.initializeApp(environment.firebase,'clientpanel'),
     AngularFireAuthModule,
     FlashMessagesModule.forRoot(),
-    NgxPaginationModule    
+    NgxPaginationModule,
+    NgProgressModule,
+    NgProgressModule    
   ],
   providers: [
     TitanService,
@@ -92,7 +96,8 @@ const appRoutes: Routes = [
   AuthGuard,
   CamundaService,
   SharedDataService,
-  DatePipe
+  DatePipe,
+  { provide: HTTP_INTERCEPTORS, useClass: NgProgressInterceptor, multi: true }
 ],  
   entryComponents: [
     NotesComponent,
