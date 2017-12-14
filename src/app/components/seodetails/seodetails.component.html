@@ -1,52 +1,31 @@
 <div id="clientdetails" role="tablist" aria-multiselectable="true">
-    <div class="card">
-      <div class="card-header" role="tab" id="headingthree">
-        <h6 class="mb-0">
-          <a data-toggle="collapse" data-parent="#clientdetails" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-            Client Details
-          </a>
-        </h6>
-      </div>
-  
-      <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-sm-6">
-              <h5 class="h6">First Name: <small class="text-dark text-capitalize"> {{ seoheader?.FirstName}}</small></h5>        
-              <h6>Phone: <small class="text-dark text-capitalize"> {{ seoheader?.Phone}}</small></h6>         
-            </div>
-            <div class="col-sm-6">
-              <h6>Last Name: <small class="text-dark"> {{ seoheader?.LastName}}</small></h6>       
-              <h6>Email: <small class="text-dark"> {{ seoheader?.EmailID}}</small></h6>   
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <br>
-
-<div id="seodetails" role="tablist" aria-multiselectable="true">
   <div class="card">
-    <div class="card-header" role="tab" id="headingFour">
+    <div class="card-header" role="tab" id="headingthree">
       <h6 class="mb-0">
-        <a data-toggle="collapse" data-parent="#seodetails" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-          SEO Details
+        <a data-toggle="collapse" data-parent="#clientdetails" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Client Details
         </a>
       </h6>
     </div>
 
-    <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour">
+    <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
       <div class="card-body">
         <div class="row">
           <div class="col-sm-6">
-            <h5 class="h6">Business Name: <small class="text-dark text-capitalize"> {{ seoheader?.BusinessName }}</small></h5>        
-            <h6>Proposal Id: <small class="text-dark"> {{ seoheader?.proposalId }}</small></h6>       
-            <h6>Primary Category Id: <small class="text-dark"> {{ seoheader?.primaryCategoryId }}</small></h6>           
+            <h5 class="h6">First Name:
+              <small class="text-dark text-capitalize"> {{ seoheader?.FirstName}}</small>
+            </h5>
+            <h6>Phone:
+              <small class="text-dark text-capitalize"> {{ seoheader?.Phone}}</small>
+            </h6>
           </div>
           <div class="col-sm-6">
-            <h6>Confirmation Number: <small class="text-dark"> {{ seoheader?.confirmationNumber }}</small></h6>       
-            <h6>Notes: <small class="text-dark"> {{ seoheader?.notes }}</small></h6>   
-            <h6>Primary Category Name: <small class="text-dark"> {{ seoheader?.primaryCategoryId }}</small></h6>   
+            <h6>Last Name:
+              <small class="text-dark"> {{ seoheader?.LastName}}</small>
+            </h6>
+            <h6>Email:
+              <small class="text-dark"> {{ seoheader?.EmailID}}</small>
+            </h6>
           </div>
         </div>
       </div>
@@ -54,69 +33,75 @@
   </div>
   <br>
 
-
-  <div id="catlist" role="tablist" aria-multiselectable="true">
+  <div id="seodetails" role="tablist" aria-multiselectable="true">
     <div class="card">
-      <div class="card-header" role="tab" id="headingFive">
+      <div class="card-header" role="tab" id="headingFour">
         <h6 class="mb-0">
-          <a data-toggle="collapse" data-parent="#catlist" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-            Category List
+          <a data-toggle="collapse" data-parent="#seodetails" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            SEO Details
           </a>
         </h6>
       </div>
-  
-      <div id="collapseFive" class="collapse" role="tabpanel" aria-labelledby="headingFive">
+
+      <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour">
         <div class="card-body">
-          <table class="table table-sm">
-            <thead class="thead">
-              <tr class="bg-light Active">
-                <th class="text-dark h6">Category Id</th>
-                <th class="text-dark h6">Category Name</th>                
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let category of categorylist">
-                <td><small class="text-dark"> {{ category?.CategoryId }}</small></td>
-                <td><small class="text-dark"> {{ category?.CategoryName }}</small></td>                
-              </tr>
-            </tbody>
-          </table>
+          <div class="row">
+            <div class="col-sm-6">
+              <h5 class="h6">Business Name:
+                <small class="text-dark text-capitalize"> {{ seoheader?.BusinessName }}</small>
+              </h5>
+              <h6>Proposal Id:
+                <small class="text-dark"> {{ seoheader?.proposalId }}</small>
+              </h6>
+              <h6>Primary Category Id:
+                <small class="text-dark"> {{ seoheader?.primaryCategoryId }}</small>
+              </h6>
+            </div>
+            <div class="col-sm-6">
+              <h6>Confirmation Number:
+                <small class="text-dark"> {{ seoheader?.confirmationNumber }}</small>
+              </h6>
+              <h6>Notes:
+                <small class="text-dark"> {{ seoheader?.notes }}</small>
+              </h6>
+              <h6>Primary Category Name:
+                <small class="text-dark"> {{ seoheader?.primaryCategoryId }}</small>
+              </h6>
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <br>
 
-    <div id="websitelist" role="tablist" aria-multiselectable="true">
+
+    <div id="catlist" role="tablist" aria-multiselectable="true">
       <div class="card">
-        <div class="card-header" role="tab" id="headingSix">
+        <div class="card-header" role="tab" id="headingFive">
           <h6 class="mb-0">
-            <a data-toggle="collapse" data-parent="#websitelist" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-              Website List
+            <a data-toggle="collapse" data-parent="#catlist" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+              Category List
             </a>
           </h6>
         </div>
-    
-        <div id="collapseSix" class="collapse" role="tabpanel" aria-labelledby="headingSix">
+
+        <div id="collapseFive" class="collapse" role="tabpanel" aria-labelledby="headingFive">
           <div class="card-body">
             <table class="table table-sm">
               <thead class="thead">
                 <tr class="bg-light Active">
-                  <th class="text-dark h6">URL</th>
-                  <th class="text-dark h6">User Name</th>                
-                  <th class="text-dark h6">Password</th>  
-                  <th class="text-dark h6">Primary</th>  
-                  <th class="text-dark h6">DexMedia Site?</th>  
-                  <th class="text-dark h6">New Website?</th>  
+                  <th class="text-dark h6">Category Id</th>
+                  <th class="text-dark h6">Category Name</th>
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let website of websiteurllist">
-                  <td><small class="text-dark"> {{website?.url}}</small></td>
-                  <td><small class="text-dark"> {{website?.isDexmediaSite}}</small></td>                
-                  <td><small class="text-dark"> {{website?.isPrimary}}</small></td> 
-                  <td><small class="text-dark"> {{website?.isNew}}</small></td> 
-                  <td><small class="text-dark"> {{website?.username}}</small></td> 
-                  <td><small class="text-dark"> {{website?.password}}</small></td> 
+                <tr *ngFor="let category of categorylist">
+                  <td>
+                    <small class="text-dark"> {{ category?.CategoryId }}</small>
+                  </td>
+                  <td>
+                    <small class="text-dark"> {{ category?.CategoryName }}</small>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -124,3 +109,94 @@
         </div>
       </div>
       <br>
+
+      <div id="websitelist" role="tablist" aria-multiselectable="true">
+        <div class="card">
+          <div class="card-header" role="tab" id="headingSix">
+            <h6 class="mb-0">
+              <a data-toggle="collapse" data-parent="#websitelist" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                Website List
+              </a>
+            </h6>
+          </div>
+
+          <div id="collapseSix" class="collapse" role="tabpanel" aria-labelledby="headingSix">
+            <div class="card-body">
+              <table class="table table-sm table-bordered">
+                <thead class="thead">
+                  <tr class="bg-light Active">
+                    <th class="text-dark h6">URL</th>
+                    <th class="text-dark h6">User Name</th>
+                    <th class="text-dark h6">Password</th>
+                    <th class="text-dark h6">Primary</th>
+                    <th class="text-dark h6">DexMedia Site?</th>
+                    <th class="text-dark h6">New Website?</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let website of websiteurllist">
+                    <td>
+                      <small class="text-dark"> {{website?.url}}</small>
+                    </td>
+                    <td>
+                      <small class="text-dark"> {{website?.isDexmediaSite}}</small>
+                    </td>
+                    <td>
+                      <small class="text-dark"> {{website?.isPrimary}}</small>
+                    </td>
+                    <td>
+                      <small class="text-dark"> {{website?.isNew}}</small>
+                    </td>
+                    <td>
+                      <small class="text-dark"> {{website?.username}}</small>
+                    </td>
+                    <td>
+                      <small class="text-dark"> {{website?.password}}</small>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <form *ngIf="history!='true'" novalidate #f="ngForm" (ngSubmit)="onSubmit(f)">
+                <div class="row">
+                  <div class="col-6">
+
+                    <fieldset class="form-group">
+                      <legend>Disposition Details</legend>
+                      <h6>Is there a Thryv on this account?</h6>
+                      <label>
+                        <input type="radio" name="thryvdetails" id="radio1" value="Y" [(ngModel)]="thryvdetails.resultValue"> Yes
+                      </label>
+                      <label>
+                        <input type="radio" name="thryvdetails" id="radio2" value="N" [(ngModel)]="thryvdetails.resultValue"> No
+                      </label>
+                    </fieldset>
+                  </div>
+                  <div class="col-6 " data-require-pair="#radio1">
+                    <fieldset class="form-group">
+                      <h6 class="mt-5">Is website live?</h6>
+                      <label>
+                        <input type="radio" name="websitedetails" id="radio3" value="Y" [(ngModel)]="websitedetails.resultValue"> Yes
+                      </label>
+                      <label>
+                        <input type="radio" name="websitedetails" id="radio4" value="N" [(ngModel)]="websitedetails.resultValue"> No
+                      </label>
+                    </fieldset>
+                  </div>
+
+                </div>
+                <legend>Fulfillment Status</legend>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input"> Awaiting Response
+                  </label>
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input"> Internal Hold
+                  </label>
+                </div>
+                <button class="btn btn-outline-info" type="submit">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <br>

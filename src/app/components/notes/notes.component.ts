@@ -38,7 +38,7 @@ export class NotesComponent implements OnInit {
     console.log(note);
     this.titanService.addNote(note).subscribe(res => {
       console.log(res);
-      this.notes.push(note)
+      this.notes.unshift(note)
     }
 
     )

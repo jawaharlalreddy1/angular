@@ -43,7 +43,7 @@ import { NgProgressModule, NgProgressInterceptor } from 'ngx-progressbar';
 // Create Routes
 const appRoutes: Routes = [
   { path: 'myseo', component: MytasksComponent,canActivate:[AuthGuard] },
-  { path: 'seo/:id/:enterpriseItemId/:pid/:enterpriseAcctId/:history', component: SeoinfoComponent,canActivate:[AuthGuard] },
+  { path: 'seo/:id/:enterpriseItemId/:pid/:enterpriseAcctId/:history/:parentId', component: SeoinfoComponent,canActivate:[AuthGuard] },
   { path: 'seogroup', component: SeoWorklistComponent,canActivate:[AuthGuard] },
   { path: 'myseohistory', component: MyseohistoryComponent,canActivate:[AuthGuard] },
   // ,{path:'notes', component: NotesComponent}
