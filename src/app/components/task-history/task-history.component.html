@@ -28,8 +28,8 @@
               <table *ngIf="task.taskHistoryDetails?.length > 0;else taskDetails" class="table table-sm table-bordered">
                 <thead class="bg-light">
                   <tr>
-                    <th>Result Name</th>
-                    <th>Result Value</th>
+                    <th></th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -48,7 +48,7 @@
 
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-outline-info fa fa-window-close-o" (click)="activeModal.close('Close click')"> Close</button>
+  <button type="button" class="btn btn-outline-secondary fa fa-window-close-o" (click)="activeModal.close('Close click')"> Close</button>
 </div>
 
 <ng-template #taskHistory>

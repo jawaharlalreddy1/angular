@@ -4,10 +4,10 @@
       <i class="fa fa-tasks"></i> Seo Group Tasks</h5>
   </div>
 </div>
-<hr class="bg-info active">
+<hr class="bg-secondary active">
 <table *ngIf="tasks?.length > 0;else noClients" class="table table-sm table-bordered">
   <thead class="thead">
-    <tr class="bg-info">
+    <tr class="bg-secondary">
       <th class="text-dark font-weight-bold  h6">Enterprise Acct Id</th>
       <th class="text-dark font-weight-bold h6">Enterprise Item Id</th>
       <th class="text-dark font-weight-bold h6">Product Type</th>
@@ -26,13 +26,13 @@
       <td>{{task.salesChannelCode}}</td>
       <td>{{task.transactionType}}</td>
       <td>
-        <a href="" class="btn btn-outline-info acive btn-sm" (click)="claim(task.id,task)" onclick="return false;">
+        <a href="" class="btn btn-outline-secondary acive btn-sm" (click)="claim(task.id,task)" onclick="return false;">
           <i class="fa fa-arrow-circle-o-right"></i> Claim</a>
       </td>
     </tr>
   </tbody>
 </table>
-<pagination-controls (pageChange)="p = $event"></pagination-controls>
+<pagination-controls (pageChange)="p = $event" class="my-pagination"></pagination-controls>
 <ng-template #noClients>
   <h6>There are no tasks in the group list!</h6>
 </ng-template>

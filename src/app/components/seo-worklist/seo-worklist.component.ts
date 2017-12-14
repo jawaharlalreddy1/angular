@@ -76,7 +76,7 @@ export class SeoWorklistComponent implements OnInit {
 
     let taskHistory = {
       "taskId": task.id,
-      "taskDescription": 'SEO Claim Task',
+      "taskDescription": 'SEO - New Task',
       "status": 'Accepted',
       "user": this.userId,
       "dateTimeStamp": this.datePipe.transform(new Date(), 'yyyy-MM-dd hh:mm:ss'),
