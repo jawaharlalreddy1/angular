@@ -84,7 +84,7 @@ export class SeodetailsComponent implements OnInit {
 
       let taskHistory = {
         "taskId": this.taskId,
-        "taskDescription": 'SEO Details',
+        "taskDescription": 'Website Details',
         "status": '',
         "user": this.userId,
         "dateTimeStamp": this.datePipe.transform(new Date(), 'yyyy-MM-dd hh:mm:ss'),

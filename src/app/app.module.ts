@@ -39,6 +39,7 @@ import { DatePipe } from '@angular/common';
 import { MyseohistoryComponent } from './components/myseohistory/myseohistory.component';
 import { MileStoneComponent } from './components/mile-stone/mile-stone.component';
 import { NgProgressModule, NgProgressInterceptor } from 'ngx-progressbar';
+import { FilterPipe } from './filter.pipe';
 
 // Create Routes
 const appRoutes: Routes = [
@@ -68,6 +69,7 @@ const appRoutes: Routes = [
     SeoWorklistComponent,
     MyseohistoryComponent,
     MileStoneComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,

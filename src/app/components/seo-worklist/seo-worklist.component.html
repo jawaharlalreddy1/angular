@@ -5,6 +5,13 @@
   </div>
 </div>
 <hr class="bg-secondary active">
+<form id="filter">
+    <div class="input-group">
+        <span class="input-group-addon">Filter By</span>
+        <input type="text" name="itemid" class="form-control" placeholder="Enterprise Item Id" [(ngModel)]="itemid">        
+    </div>  
+</form>
+<br>
 <table *ngIf="tasks?.length > 0;else noClients" class="table table-sm table-bordered">
   <thead class="thead">
     <tr class="bg-secondary">
@@ -18,7 +25,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let task of tasks | paginate: { itemsPerPage: 10, currentPage: p }">
+    <tr *ngFor="let task of tasks | filter:itemid | paginate: { itemsPerPage: 10, currentPage: p }">
       <td>{{task.enterpriseAccountId}}</td>
       <td>{{task.enterpriseItemId}}</td>
       <td>{{task.producttype}}</td>

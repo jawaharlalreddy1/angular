@@ -1,7 +1,7 @@
 <div class="note" >
     <div class="card card-title">
       <div class="card-header" >
-      Add By: {{ note.addedBy   }} On: {{ note.addedOn | date:'medium'}} 
+      Added By {{ note.addedBy   }} On {{ note.addedOn | date:'medium'}} 
         <a href="" class="btn btn-link text-dark" (click)="note.hide = !note.hide" onclick="return false;" >Show</a>      
       </div>
       <div class="card-block" [hidden]="!note.hide">
