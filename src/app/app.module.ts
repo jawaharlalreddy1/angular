@@ -10,7 +10,8 @@ import { MatButtonModule, MatCheckboxModule, MatInputModule, MatDialogModule } f
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AngularFireModule } from 'angularfire2'
+import { AngularFireModule } from 'angularfire2';
+import {HttpModule} from '@angular/http';
 
 
 import { AppComponent } from './app.component';
@@ -31,6 +32,7 @@ import { LoginComponent } from './components/login/login.component';
 import {FlashMessagesModule} from 'angular2-flash-messages/module';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guards';
+import { RoleGuardService as RoleGuard } from './guards/role.guard'; 
 import {SeoWorklistComponent} from '../app/components/seo-worklist/seo-worklist.component'
 import { CamundaService } from './services/camunda/camunda.service';
 import {SharedDataService} from '../app/services/shared-data.service';
@@ -43,10 +45,10 @@ import { FilterPipe } from './filter.pipe';
 
 // Create Routes
 const appRoutes: Routes = [
-  { path: 'myseo', component: MytasksComponent,canActivate:[AuthGuard] },
+  { path: 'myseo', component: MytasksComponent,canActivate:[RoleGuard], data: { role: 'admin'}  },
   { path: 'seo/:id/:enterpriseItemId/:pid/:enterpriseAcctId/:history/:parentId', component: SeoinfoComponent,canActivate:[AuthGuard] },
-  { path: 'seogroup', component: SeoWorklistComponent,canActivate:[AuthGuard] },
-  { path: 'myseohistory', component: MyseohistoryComponent,canActivate:[AuthGuard] },
+  { path: 'seogroup', component: SeoWorklistComponent,canActivate:[RoleGuard],  data: { role: 'manager'} },
+  { path: 'myseohistory', component: MyseohistoryComponent,canActivate:[AuthGuard],  data: { role: 'user'} },
   // ,{path:'notes', component: NotesComponent}
   {path:'login', component: LoginComponent},
 ];
@@ -76,6 +78,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FormsModule,
     HttpClientModule,
+    HttpModule,
     BrowserAnimationsModule,       
     MatButtonModule,
     MatCheckboxModule,
@@ -96,6 +99,7 @@ const appRoutes: Routes = [
   AngularFireDatabaseModule,
   AuthService,
   AuthGuard,
+  RoleGuard,
   CamundaService,
   SharedDataService,
   DatePipe,

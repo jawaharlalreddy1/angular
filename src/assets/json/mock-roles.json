@@ -1,0 +1,7 @@
+{
+    "roles":{        
+          "sukku1240@gmail.com" : "admin",
+          "jawahar@gmail.com": "manager",
+          "suresh@gmail.com": "user"
+    }
+}
