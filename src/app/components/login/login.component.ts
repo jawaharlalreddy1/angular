@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit() {
-    //this.authService.signup('jawahar@gmail.com', '123456');
   }
 
   onSubmit() {

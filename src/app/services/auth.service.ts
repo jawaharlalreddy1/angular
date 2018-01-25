@@ -26,18 +26,6 @@ export class AuthService {
         err => reject(err));
     });
   }
-
-  // signup(email: string, password: string) {
-  //   this.afAuth
-  //     .auth
-  //     .createUserWithEmailAndPassword(email, password)
-  //     .then(value => {
-  //       console.log('Success!', value);
-  //     })
-  //     .catch(err => {
-  //       console.log('Something went wrong:',err.message);
-  //     });    
-  // }
   getAuth() {
     return this.afAuth.authState.map(auth => auth);
   }
