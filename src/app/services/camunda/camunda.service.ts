@@ -13,14 +13,14 @@ claimTask(userId:string,taskId:string){
   let req= {"userId":userId};
 
   let headers = new HttpHeaders().set(
-    'Access-Control-Allow-Origin', 'http://localhost:3000'
+    'Access-Control-Allow-Origin', 'http://167.241.54.94:3000'
     );
   
   headers = headers.append('Content-Type', 'application/json');
   headers = headers.append('Access-Control-Allow-Credentials', 'true');
   headers = headers.append('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS, POST, PUT, DELETE');
 
-  return this.http.post('http://localhost:8080/engine-rest/task/' + taskId + '/claim',req, {
+  return this.http.post('http://167.241.54.94:8080/engine-rest/task/' + taskId + '/claim',req, {
     headers: headers
   })
     .map(res => res)
@@ -29,17 +29,34 @@ claimTask(userId:string,taskId:string){
 completeTask(taskId:string){
   
   let headers = new HttpHeaders().set(
-    'Access-Control-Allow-Origin', 'http://localhost:3000'
+    'Access-Control-Allow-Origin', 'http://167.241.54.94:3000'
     );
   
   headers = headers.append('Content-Type', 'application/json');
   headers = headers.append('Access-Control-Allow-Credentials', 'true');
   headers = headers.append('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS, POST, PUT, DELETE');
 
-  return this.http.post('http://localhost:8080/engine-rest/task/' + taskId + '/complete', {
+  return this.http.post('http://167.241.54.94:8080/engine-rest/task/' + taskId + '/complete', {
     headers: headers
   })
     .map(res => res)
 }
+
+countTask(){
+  
+  let headers = new HttpHeaders().set(
+    'Access-Control-Allow-Origin', 'http://167.241.54.94:3000'
+    );
+  
+  headers = headers.append('Content-Type', 'application/json');
+  headers = headers.append('Access-Control-Allow-Credentials', 'true');
+  headers = headers.append('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS, POST, PUT, DELETE');
+
+  return this.http.post('http://167.241.54.94:8080/engine-rest/task/count??processDefinitionKey=SEONewProcess&candidateGroup=SEOAllUsers&unassigned=true', {
+    headers: headers
+  })
+    .map(res => res)    
+}
+
 
 }

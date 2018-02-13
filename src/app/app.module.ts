@@ -49,6 +49,7 @@ const appRoutes: Routes = [
   { path: 'seo/:id/:enterpriseItemId/:pid/:enterpriseAcctId/:history/:parentId', component: SeoinfoComponent,canActivate:[AuthGuard] },
   { path: 'seogroup', component: SeoWorklistComponent,canActivate:[RoleGuard],  data: { role: 'manager'} },
   { path: 'myseohistory', component: MyseohistoryComponent,canActivate:[AuthGuard],  data: { role: 'user'} },
+  { path: 'MyseotasksComponent', component: MyseotasksComponent,canActivate:[AuthGuard],  data: { role: 'manager'} },
   // ,{path:'notes', component: NotesComponent}
   {path:'login', component: LoginComponent},
 ];
@@ -89,8 +90,7 @@ const appRoutes: Routes = [
     AngularFireAuthModule,
     FlashMessagesModule.forRoot(),
     NgxPaginationModule,
-    NgProgressModule,
-    NgProgressModule    
+    NgProgressModule
   ],
   providers: [
     TitanService,

@@ -15,8 +15,7 @@ export class TitanService {
 
   constructor(public http: HttpClient) { }
 
-  getAssignedTasks(user: string, assigned: boolean,history:boolean): Observable<Taskres> {
-
+  getAssignedTasksByPage(user: string, assigned: boolean,history:boolean,currentPage : number, itemsperpage: number ): Observable<Taskres> {
     let req: string;
     let url:string;
     let username: string = 'ESB';
@@ -25,26 +24,58 @@ export class TitanService {
       'Authorization', 'Basic ' + btoa(username + ":" + password
       ));
 
-    headers = headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
+    headers = headers.append('Access-Control-Allow-Origin', 'http://167.241.54.94:3000');
     headers = headers.append('Access-Control-Allow-Credentials', 'true');
     headers = headers.append('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS, POST, PUT, DELETE');
     if(history){
-      req = '&processDefinitionKeyIn=SEONewProcess&assignee=' + user + '&assigned=true';
-      url = 'https://localhost:3000/seo/get/bpmsTasks/processDefinitionName/history/?processDefinitionKey=SEONewProcess';
+      req = '&processDefinitionKeyIn=SEONewProcess&assignee=' + user + '&assigned=true&firstResult='+currentPage+'&maxResults='+itemsperpage;
+      url = 'https://167.241.54.94:3000/seo/get/bpmsTasks/processDefinitionName/history/?processDefinitionKey=SEONewProcess';
     }else{    
     if (assigned) {
-      req = '&processDefinitionKeyIn=SEONewProcess&assignee=' + user + '&assigned=true';
-      url = 'https://localhost:3000/seo/get/bpmsTasks/processDefinitionName/inprogress/?processDefinitionKey=SEONewProcess';
-    } else {
-      req = '&candidateGroup=SEOAllUsers&unassigned=true';
-      url = 'https://localhost:3000/seo/get/bpmsTasks/processDefinitionName/inprogress/?processDefinitionKey=SEONewProcess';
-    }}
-    
+      req = '&processDefinitionKeyIn=SEONewProcess&assignee=' + user + '&assigned=true&firstResult='+currentPage+'&maxResults='+itemsperpage;
+      url = 'https://167.241.54.94:3000/seo/get/bpmsTasks/processDefinitionName/inprogress/?processDefinitionKey=SEONewProcess';
+    } else {      
+      req = '&candidateGroup=SEOAllUsers&unassigned=true&firstResult='+currentPage+'&maxResults='+itemsperpage;
+      url = 'https://167.241.54.94:3000/seo/get/bpmsTasks/processDefinitionName/inprogress/?processDefinitionKey=SEONewProcess';       
+    }}    
     return this.http.get<Taskres>(url + req, {
       headers: headers
     })
       .map(res => res)
   }
+
+  
+  getAssignedTasks(user: string, assigned: boolean,history:boolean ): Observable<Taskres> {
+    
+        let req: string;
+        let url:string;
+        let username: string = 'ESB';
+        let password: string = 'BdL5C35jwNC2K6Vs';
+        let headers = new HttpHeaders().set(
+          'Authorization', 'Basic ' + btoa(username + ":" + password
+          ));
+    
+        headers = headers.append('Access-Control-Allow-Origin', 'http://167.241.54.94:3000');
+        headers = headers.append('Access-Control-Allow-Credentials', 'true');
+        headers = headers.append('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS, POST, PUT, DELETE');
+        if(history){
+          req = '&processDefinitionKeyIn=SEONewProcess&assignee=' + user + '&assigned=true';
+          url = 'https://167.241.54.94:3000/seo/get/bpmsTasks/processDefinitionName/history/?processDefinitionKey=SEONewProcess';
+        }else{    
+        if (assigned) {
+          req = '&processDefinitionKeyIn=SEONewProcess&assignee=' + user + '&assigned=true';
+          url = 'https://167.241.54.94:3000/seo/get/bpmsTasks/processDefinitionName/inprogress/?processDefinitionKey=SEONewProcess';
+        } else {      
+          req = '&candidateGroup=SEOAllUsers&unassigned=true';
+          url = 'https://167.241.54.94:3000/seo/get/bpmsTasks/processDefinitionName/inprogress/?processDefinitionKey=SEONewProcess';
+          }}
+        
+        return this.http.get<Taskres>(url + req, {
+          headers: headers
+        })
+          .map(res => res)
+      }
+    
 
   getSeodata(enterPriseItemId: string): Observable<SeoData> {
 
@@ -54,11 +85,11 @@ export class TitanService {
       'Authorization', 'Basic ' + btoa(username + ":" + password
       ));
 
-    headers = headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
+    headers = headers.append('Access-Control-Allow-Origin', 'http://167.241.54.94:3000');
     headers = headers.append('Access-Control-Allow-Credentials', 'true');
     headers = headers.append('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS, POST, PUT, DELETE');
 
-    return this.http.get<SeoData>('https://localhost:3000/seo/get/seoproduct/enterpriseItemId/' + enterPriseItemId, {
+    return this.http.get<SeoData>('https://167.241.54.94:3000/seo/get/seoproduct/enterpriseItemId/' + enterPriseItemId, {
       headers: headers
     })
       .map(res => res)
@@ -72,11 +103,11 @@ export class TitanService {
       'Authorization', 'Basic ' + btoa(username + ":" + password
       ));
 
-    headers = headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
+    headers = headers.append('Access-Control-Allow-Origin', 'http://167.241.54.94:3000');
     headers = headers.append('Access-Control-Allow-Credentials', 'true');
     headers = headers.append('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS, POST, PUT, DELETE');
 
-    return this.http.get<NotesRes>('https://localhost:4000/common/retrievenotes/enterpriseItemId/' + enterPriseItemId, {
+    return this.http.get<NotesRes>('https://167.241.54.94:4000/common/retrievenotes/enterpriseItemId/' + enterPriseItemId, {
       headers: headers
     })
       .map(res => res
@@ -90,13 +121,13 @@ export class TitanService {
       'Authorization', 'Basic ' + btoa(username + ":" + password
       ));
 
-    headers = headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
+    headers = headers.append('Access-Control-Allow-Origin', 'http://167.241.54.94:3000');
     headers = headers.append('Access-Control-Allow-Credentials', 'true');
     headers = headers.append('Content-Type', 'application/json');
     headers = headers.append('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS, POST, PUT, DELETE');
     console.log(note);
     console.log(JSON.stringify(note));
-    return this.http.post('https://localhost:4000/common/post/instanceNotes', JSON.stringify(note), {
+    return this.http.post('https://167.241.54.94:4000/common/post/instanceNotes', JSON.stringify(note), {
       headers: headers
     })
       .map(res => res
@@ -113,11 +144,11 @@ export class TitanService {
       'Authorization', 'Basic ' + btoa(username + ":" + password
       ));
 
-    headers = headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
+    headers = headers.append('Access-Control-Allow-Origin', 'http://167.241.54.94:3000');
     headers = headers.append('Access-Control-Allow-Credentials', 'true');
     headers = headers.append('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS, POST, PUT, DELETE');
 
-    return this.http.get<TaskHistoryHeader>('https://localhost:4000/common/retrievetaskhistory/enterpriseItemId/' + enterPriseItemId, {
+    return this.http.get<TaskHistoryHeader>('https://167.241.54.94:4000/common/retrievetaskhistory/enterpriseItemId/' + enterPriseItemId, {
       headers: headers
     })
       .map(res => res
@@ -131,13 +162,13 @@ export class TitanService {
       'Authorization', 'Basic ' + btoa(username + ":" + password
       ));
 
-    headers = headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
+    headers = headers.append('Access-Control-Allow-Origin', 'http://167.241.54.94:3000');
     headers = headers.append('Access-Control-Allow-Credentials', 'true');
     headers = headers.append('Content-Type', 'application/json');
     headers = headers.append('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS, POST, PUT, DELETE');
     console.log(taskhistory);
     console.log(JSON.stringify(taskhistory));
-    return this.http.post('https://localhost:4000/common/post/taskHistory', JSON.stringify(taskhistory), {
+    return this.http.post('https://167.241.54.94:4000/common/post/taskHistory', JSON.stringify(taskhistory), {
       headers: headers
     })
       .map(res => res
@@ -153,11 +184,11 @@ export class TitanService {
           'Authorization', 'Basic ' + btoa(username + ":" + password
           ));
     
-        headers = headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
+        headers = headers.append('Access-Control-Allow-Origin', 'http://167.241.54.94:3000');
         headers = headers.append('Access-Control-Allow-Credentials', 'true');
         headers = headers.append('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS, POST, PUT, DELETE');
     
-        return this.http.get<MileStones>('https://localhost:4000/common/retrieveprocessmilestones/enterpriseitemid/' + enterPriseItemId, {
+        return this.http.get<MileStones>('https://167.241.54.94:4000/common/retrieveprocessmilestones/enterpriseitemid/' + enterPriseItemId, {
           headers: headers
         })
           .map(res => res
