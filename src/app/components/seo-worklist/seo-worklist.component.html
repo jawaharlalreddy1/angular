@@ -25,7 +25,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let task of tasks | filter:itemid | paginate: { itemsPerPage: 10, currentPage: p }">
+    <tr *ngFor="let task of tasks | filter:itemid | paginate: {itemsPerPage: itemsPerPage, currentPage: p,totalItems:countOfPages }">
       <td>{{task.enterpriseAccountId}}</td>
       <td>{{task.enterpriseItemId}}</td>
       <td>{{task.producttype}}</td>
@@ -39,7 +39,7 @@
     </tr>
   </tbody>
 </table>
-<pagination-controls (pageChange)="p = $event" class="my-pagination"></pagination-controls>
+<pagination-controls (pageChange)="pageChange($event)" class="my-pagination"  maxSize="9"></pagination-controls>
 <ng-template #noClients>
   <h6>There are no tasks in the group list!</h6>
 </ng-template>
